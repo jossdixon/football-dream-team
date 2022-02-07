@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import AddToList from './components/AddToList';
 import List from "./components/List"
 
 interface IState {
@@ -32,6 +33,7 @@ function App() {
     <div className="App">
       <h1>Football Dream Team</h1>
       <List players={ players }/>
+      <AddToList />
     </div>
   );
 }

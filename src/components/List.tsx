@@ -17,6 +17,7 @@ const List: React.FC<IProps> = ({ players }) => {
 
   const renderList = () => {
     return players.map((player) => {
+      return (
       <li className="List">
         <div className="List-header">
           <img src={player.url} className="List-img" alt={player.name}/>
@@ -28,16 +29,13 @@ const List: React.FC<IProps> = ({ players }) => {
         <p>{player.nation}</p>
         <p className="List-note">{player.notes}</p>
       </li>
+      )
     })
   }
 
   return (
     <ul>
-      { players.map(player => {
-        return (
-          <div>{player.name}</div>
-        )
-      })}
+     { renderList() }
     </ul>
   )
 }
