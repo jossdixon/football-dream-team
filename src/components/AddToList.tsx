@@ -6,7 +6,7 @@ interface IProps {
   players: Props["players"]
 }
 
-const AddToList: React.FC<IProps> = () => {
+const AddToList: React.FC<IProps> = ({setPlayer, players}) => {
 
   const [input, setInput] = useState({
     name: "",
@@ -52,8 +52,11 @@ const AddToList: React.FC<IProps> = () => {
     setInput({
       name: "",
       age: "",
-      img: "",
-      note: ""
+      url: "",
+      position: "",
+      club: "",
+      nation: "",
+      notes: ""
     })
   }
 
