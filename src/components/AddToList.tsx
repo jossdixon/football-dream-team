@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { IState as Props } from "../App"
 
 interface IProps {
-  players: Props["players"]
   setPlayer: React.Dispatch<React.SetStateAction<Props["players"]>>
+  players: Props["players"]
 }
 
 const AddToList: React.FC<IProps> = () => {
@@ -25,7 +25,7 @@ const AddToList: React.FC<IProps> = () => {
     })
   }
 
-  const handleClick = (): void => {
+  const handleClick = () => {
     if(
       !input.name ||
       !input.url ||
@@ -33,9 +33,8 @@ const AddToList: React.FC<IProps> = () => {
       !input.age ||
       !input.club ||
       !input.nation
-    ) {
-      return
-    }
+    )
+    return
 
     setPlayer([
       ...players,
@@ -43,12 +42,19 @@ const AddToList: React.FC<IProps> = () => {
         name: input.name,
         url: input.url,
         position: input.position,
-        age: input.age,
+        age: parseInt(input.age),
         club: input.club,
         nation: input.nation,
         notes: input.notes
       }
-    ])
+    ]);
+
+    setInput({
+      name: "",
+      age: "",
+      img: "",
+      note: ""
+    })
   }
 
   return (
