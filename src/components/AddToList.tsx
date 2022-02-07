@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import { IState as Props } from "../App"
 
-const AddToList = () => {
+interface IProps {
+  players: Props["players"]
+  setPlayer: React.Dispatch<React.SetStateAction<Props["players"]>>
+}
+
+const AddToList: React.FC<IProps> = () => {
 
   const [input, setInput] = useState({
     name: "",
@@ -12,11 +18,37 @@ const AddToList = () => {
     notes: "",
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setInput({
       ...input,
       [e.target.name]: e.target.value
     })
+  }
+
+  const handleClick = (): void => {
+    if(
+      !input.name ||
+      !input.url ||
+      !input.position ||
+      !input.age ||
+      !input.club ||
+      !input.nation
+    ) {
+      return
+    }
+
+    setPlayer([
+      ...players,
+      {
+        name: input.name,
+        url: input.url,
+        position: input.position,
+        age: input.age,
+        club: input.club,
+        nation: input.nation,
+        notes: input.notes
+      }
+    ])
   }
 
   return (
@@ -74,8 +106,15 @@ const AddToList = () => {
         placeholder="Notes about the player..."
         className="AddToList-input"
         value={input.notes}
-
+        onChange={handleChange}
+        name="note"
       />
+      <button
+        className="AddToList-btn"
+        onClick={handleClick}
+      >
+        Add to List
+      </button>
     </div>
   )
 }

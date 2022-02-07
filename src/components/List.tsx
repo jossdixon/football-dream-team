@@ -1,17 +1,5 @@
-import { prependOnceListener } from "process";
 import React from "react";
-
-interface IProps {
-  players: {
-    name: string
-    url: string
-    position: string
-    age: number
-    club: string
-    nation: string
-    notes?: string
-  }[]
-}
+import { IState as IProps } from "../App"
 
 const List: React.FC<IProps> = ({ players }) => {
 
